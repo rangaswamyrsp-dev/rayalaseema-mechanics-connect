@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as MembershipRouteImport } from './routes/membership'
+import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as WelfareRouteImport } from './routes/welfare'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipRoute = MembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticesRoute = NoticesRouteImport.update({
+  id: '/notices',
+  path: '/notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelfareRoute = WelfareRouteImport.update({
+  id: '/welfare',
+  path: '/welfare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/membership': typeof MembershipRoute
+  '/notices': typeof NoticesRoute
+  '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
+  '/welfare': typeof WelfareRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/membership': typeof MembershipRoute
+  '/notices': typeof NoticesRoute
+  '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
+  '/welfare': typeof WelfareRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/membership': typeof MembershipRoute
+  '/notices': typeof NoticesRoute
+  '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
+  '/welfare': typeof WelfareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/membership'
+    | '/notices'
+    | '/payments'
+    | '/profile'
+    | '/welfare'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/membership'
+    | '/notices'
+    | '/payments'
+    | '/profile'
+    | '/welfare'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/membership'
+    | '/notices'
+    | '/payments'
+    | '/profile'
+    | '/welfare'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  MembershipRoute: typeof MembershipRoute
+  NoticesRoute: typeof NoticesRoute
+  PaymentsRoute: typeof PaymentsRoute
+  ProfileRoute: typeof ProfileRoute
+  WelfareRoute: typeof WelfareRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership': {
+      id: '/membership'
+      path: '/membership'
+      fullPath: '/membership'
+      preLoaderRoute: typeof MembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notices': {
+      id: '/notices'
+      path: '/notices'
+      fullPath: '/notices'
+      preLoaderRoute: typeof NoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welfare': {
+      id: '/welfare'
+      path: '/welfare'
+      fullPath: '/welfare'
+      preLoaderRoute: typeof WelfareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  MembershipRoute: MembershipRoute,
+  NoticesRoute: NoticesRoute,
+  PaymentsRoute: PaymentsRoute,
+  ProfileRoute: ProfileRoute,
+  WelfareRoute: WelfareRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
