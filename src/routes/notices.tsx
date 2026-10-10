@@ -1,6 +1,26 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { AssociationApp } from '@/components/association/portal';
+import { PublicLayout } from '../components/shared/PublicLayout';
+import { EmptyState } from '../components/shared/EmptyState';
+import { useI18n } from '../lib/i18n';
+
 export const Route = createFileRoute('/notices')({
- head: () => ({meta: [{title:'Notices | R2WMS'},{name:'description',content:'Notices for the R2WMS mechanics community browser demo.'},{property:'og:title',content:'Notices | R2WMS'},{property:'og:description',content:'R2WMS notices member portal.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),
- component: AssociationApp,
+  head: () => ({
+    title: 'Notices | R2WMS',
+    meta: [
+      { name: 'description', content: 'Official announcements and notices from R2WMS.' },
+    ],
+  }),
+  component: Notices,
 });
+
+function Notices() {
+  const { t } = useI18n();
+  return (
+    <PublicLayout>
+      <div className="py-20 container mx-auto px-4">
+        <h1 className="text-4xl font-bold mb-8">Association Notices</h1>
+        <EmptyState />
+      </div>
+    </PublicLayout>
+  );
+}
