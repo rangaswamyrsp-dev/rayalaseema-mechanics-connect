@@ -1,5 +1,13 @@
 # R2WMS
-- [x] Create responsive association design and navigation.
-- [x] Add browser-only member profiles and explicit demo admin/member access.
-- [x] Build membership, welfare, notices, payments and profile views with empty states for unconfigured services.
-- [x] Verify registration, persistence, navigation and mobile layout.
+- [x] Responsive design system and browser-local demo mode (kept, clearly labeled).
+- [ ] Lovable Cloud schema, roles, area-scoped security, storage buckets, audit log.
+- [ ] Real sign-in (email + Google), registration application workflow, admin approval, membership numbers.
+- [ ] Public website: all 16 pages with real approved data.
+- [ ] Member dashboard, digital ID card PDF, secure QR verification page.
+- [ ] Membership plans, payments (Razorpay setup state, manual verified records), receipts, refunds.
+- [ ] Welfare schemes, applications, documents, reviews, disbursements.
+- [ ] Notices, in-app notifications, directory, emergency, blood donors.
+- [ ] Events, training, certificates, partner offers, reports/exports.
+- [ ] English/Telugu throughout; installable app (manifest).
+- [ ] README and security review.
+- Blocked: phone OTP (needs SMS provider), Razorpay live payments (needs keys), email/SMS/WhatsApp delivery (needs providers).
