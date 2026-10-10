@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -9,6 +8,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -78,21 +78,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "R2WMS | Mechanics Welfare Seva" },
-      { name: "description", content: "Rayalaseema Two-Wheeler Mechanics Welfare Seva" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "R2WMS" },
-      { property: "og:description", content: "Rayalaseema Two-Wheeler Mechanics Welfare Seva" },
+      { title: "R2WMS | Roadside 2-Wheeler Mechanics Society" },
+      { name: "description", content: "United Mechanics • Stronger Welfare • Better Future. Empowering mechanics across Rayalaseema." },
+      { name: "author", content: "R2WMS" },
+      { property: "og:title", content: "R2WMS | United Mechanics • Stronger Welfare • Better Future" },
+      { property: "og:description", content: "Roadside 2-Wheeler Mechanics Society - Empowering mechanics across Rayalaseema." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "theme-color", content: "#0a4595" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" },
     ],
   }),
@@ -121,8 +120,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <main><Outlet /></main>
+      <Outlet />
     </QueryClientProvider>
   );
 }

@@ -1,0 +1,17 @@
+{
+  "name": "R2WMS - Roadside 2-Wheeler Mechanics Society",
+  "short_name": "R2WMS",
+  "description": "United Mechanics • Stronger Welfare • Better Future",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a4595",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
