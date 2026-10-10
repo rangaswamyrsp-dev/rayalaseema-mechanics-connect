@@ -6,8 +6,8 @@ import { ArrowRight, Shield, Users, HeartHandshake, Search, BookOpen, Bell } fro
 
 export const Route = createFileRoute('/')({
   head: () => ({
-    title: 'R2WMS | United Mechanics • Stronger Welfare • Better Future',
     meta: [
+      { title: 'R2WMS | United Mechanics • Stronger Welfare • Better Future' },
       { name: 'description', content: 'Rayalaseema Two-Wheeler Mechanics Society - Empowering mechanics through unity and welfare.' },
       { property: 'og:title', content: 'R2WMS | Home' },
       { property: 'og:description', content: 'United Mechanics • Stronger Welfare • Better Future' },

@@ -5,8 +5,8 @@ import { EmptyState } from '../components/shared/EmptyState';
 
 export const Route = createFileRoute('/training')({
   head: () => ({
-    title: 'Training & Skill Development | R2WMS',
     meta: [
+      { title: 'Training & Skill Development | R2WMS' },
       { name: 'description', content: 'Technical training and skill development programs for mechanics.' },
     ],
   }),

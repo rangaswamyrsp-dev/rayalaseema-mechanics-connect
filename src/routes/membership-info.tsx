@@ -6,8 +6,8 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const Route = createFileRoute('/membership-info')({
   head: () => ({
-    title: 'Membership Benefits | R2WMS',
     meta: [
+      { title: 'Membership Benefits | R2WMS' },
       { name: 'description', content: 'Discover the benefits of joining R2WMS.' },
     ],
   }),

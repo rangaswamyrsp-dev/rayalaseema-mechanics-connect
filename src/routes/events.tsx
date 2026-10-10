@@ -5,8 +5,8 @@ import { EmptyState } from '../components/shared/EmptyState';
 
 export const Route = createFileRoute('/events')({
   head: () => ({
-    title: 'Events | R2WMS',
     meta: [
+      { title: 'Events | R2WMS' },
       { name: 'description', content: 'Upcoming events and association meetings of R2WMS.' },
     ],
   }),

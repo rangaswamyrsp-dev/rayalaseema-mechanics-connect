@@ -8,8 +8,8 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const Route = createFileRoute('/contact')({
   head: () => ({
-    title: 'Contact Us | R2WMS',
     meta: [
+      { title: 'Contact Us | R2WMS' },
       { name: 'description', content: 'Get in touch with R2WMS for queries and support.' },
     ],
   }),

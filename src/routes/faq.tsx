@@ -5,8 +5,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 
 export const Route = createFileRoute('/faq')({
   head: () => ({
-    title: 'FAQ | R2WMS',
     meta: [
+      { title: 'FAQ | R2WMS' },
       { name: 'description', content: 'Frequently asked questions about R2WMS membership and services.' },
     ],
   }),

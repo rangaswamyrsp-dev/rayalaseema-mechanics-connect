@@ -5,8 +5,8 @@ import { useI18n } from '../lib/i18n';
 
 export const Route = createFileRoute('/notices')({
   head: () => ({
-    title: 'Notices | R2WMS',
     meta: [
+      { title: 'Notices | R2WMS' },
       { name: 'description', content: 'Official announcements and notices from R2WMS.' },
     ],
   }),

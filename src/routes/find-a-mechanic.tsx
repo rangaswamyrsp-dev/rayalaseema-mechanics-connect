@@ -7,8 +7,8 @@ import { Input } from '../components/ui/input';
 
 export const Route = createFileRoute('/find-a-mechanic')({
   head: () => ({
-    title: 'Find a Mechanic | R2WMS Directory',
     meta: [
+      { title: 'Find a Mechanic | R2WMS Directory' },
       { name: 'description', content: 'Search for certified professional mechanics in Rayalaseema.' },
     ],
   }),
