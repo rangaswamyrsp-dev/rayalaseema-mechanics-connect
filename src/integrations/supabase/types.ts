@@ -1510,6 +1510,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_stats: { Args: never; Returns: Json }
+      application_status: {
+        Args: { _ref: string }
+        Returns: {
+          reference_no: string
+          review_notes: string
+          status: string
+          updated_at: string
+        }[]
+      }
+      assign_welfare_officer: {
+        Args: { _app_id: string; _officer: string }
+        Returns: undefined
+      }
       can_manage_area: {
         Args: { _district: string; _mandal: string; _uid: string }
         Returns: boolean
@@ -1517,6 +1531,16 @@ export type Database = {
       can_manage_district: {
         Args: { _district: string; _uid: string }
         Returns: boolean
+      }
+      claim_first_super_admin: { Args: never; Returns: boolean }
+      grant_role: {
+        Args: {
+          _district?: string
+          _mandal?: string
+          _role: Database["public"]["Enums"]["app_role"]
+          _user: string
+        }
+        Returns: undefined
       }
       has_role: {
         Args: {
@@ -1527,7 +1551,65 @@ export type Database = {
       }
       is_staff: { Args: { _uid: string }; Returns: boolean }
       is_super_admin: { Args: { _uid: string }; Returns: boolean }
+      issue_certificate: {
+        Args: { _enrollment_id: string; _score: number }
+        Returns: string
+      }
+      log_action: {
+        Args: { _action: string; _entity: string; _id: string; _meta?: Json }
+        Returns: undefined
+      }
       my_member_id: { Args: never; Returns: string }
+      record_manual_payment: {
+        Args: {
+          _amount_paise: number
+          _member_id: string
+          _mode: string
+          _notes?: string
+          _plan_id: string
+        }
+        Returns: Json
+      }
+      record_welfare_disbursement: {
+        Args: { _amount_paise: number; _app_id: string; _utr: string }
+        Returns: undefined
+      }
+      reissue_card: { Args: { _member_id: string }; Returns: undefined }
+      review_membership_application: {
+        Args: { _app_id: string; _decision: string; _notes?: string }
+        Returns: Json
+      }
+      review_welfare_application: {
+        Args: {
+          _app_id: string
+          _notes?: string
+          _status: Database["public"]["Enums"]["welfare_app_status"]
+        }
+        Returns: undefined
+      }
+      revoke_role: {
+        Args: { _role: Database["public"]["Enums"]["app_role"]; _user: string }
+        Returns: undefined
+      }
+      set_member_status: {
+        Args: {
+          _member_id: string
+          _status: Database["public"]["Enums"]["membership_app_status"]
+        }
+        Returns: undefined
+      }
+      verify_card: {
+        Args: { _token: string }
+        Returns: {
+          district: string
+          full_name: string
+          issued_at: string
+          mandal: string
+          membership_number: string
+          status: string
+          valid: boolean
+        }[]
+      }
     }
     Enums: {
       app_role:
