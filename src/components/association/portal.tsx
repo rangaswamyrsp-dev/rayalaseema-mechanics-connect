@@ -3,7 +3,8 @@ import { useState, type FormEvent } from 'react';
 import { ArrowUpRight, ArrowRight, Bell, Wrench, House, BadgeCheck, HandHeart, Megaphone, UserRound, CreditCard, ShieldCheck, ChevronDown, LogOut, PanelLeftClose, PanelLeftOpen, LifeBuoy, Download, UsersRound, Search, Plus, Check, Globe, HeartHandshake, Phone, X, CalendarDays, GraduationCap, Tag, Droplets, Siren } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { DemoProvider, useDemo, demoMember, labels, translate, type Member } from './demo-store';
+import { useDemo, demoMember, labels, translate, type Member } from './demo-store';
+import { LoginEntry } from './login-entry';
 import mechanics from '@/assets/mechanics.jpg';
 
 const navigation = [
@@ -23,7 +24,10 @@ const navigation = [
 const mobileNav = ['home', 'membership', 'welfare', 'notices', 'profile'] as const;
 
 export function AssociationApp() {
-  return <DemoProvider><Portal /></DemoProvider>;
+  const { data, ready } = useDemo();
+  if (!ready) return <div className="loading-state" role="status">Loading your portal…</div>;
+  if (!data.currentId && !data.admin) return <LoginEntry />;
+  return <Portal />;
 }
 
 function Logo() {

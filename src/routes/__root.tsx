@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { DemoProvider } from '@/components/association/demo-store';
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -120,7 +121,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <DemoProvider><Outlet /></DemoProvider>
     </QueryClientProvider>
   );
 }

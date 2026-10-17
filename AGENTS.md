@@ -11,5 +11,6 @@
 
 ## Application architecture
 - Keep browser-local demo records in the shared demo provider, isolated from any future production authentication; demo roles never authorize server operations.
+- Mount the demo provider once in the root and show account entry when the portal has no local demo identity; this preserves demo state across navigation without implying server authorization.
 - Use TanStack content routes with the shared association portal and route-specific metadata so each navigation destination remains addressable.
 - Keep all association visual roles and responsive styling in the global semantic design system for consistency.
