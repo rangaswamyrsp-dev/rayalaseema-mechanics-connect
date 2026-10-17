@@ -10,39 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BloodDonorsRouteImport } from './routes/blood-donors'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as EventsRouteImport } from './routes/events'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as FindAMechanicRouteImport } from './routes/find-a-mechanic'
-import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as MembershipRouteImport } from './routes/membership'
-import { Route as MembershipInfoRouteImport } from './routes/membership-info'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as PaymentsRouteImport } from './routes/payments'
-import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
-import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrainingRouteImport } from './routes/training'
-import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as WelfareRouteImport } from './routes/welfare'
-import { Route as WelfareServicesRouteImport } from './routes/welfare-services'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -60,11 +45,6 @@ const BloodDonorsRoute = BloodDonorsRouteImport.update({
   path: '/blood-donors',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -80,29 +60,9 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FindAMechanicRoute = FindAMechanicRouteImport.update({
-  id: '/find-a-mechanic',
-  path: '/find-a-mechanic',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeadershipRoute = LeadershipRouteImport.update({
-  id: '/leadership',
-  path: '/leadership',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MembershipRoute = MembershipRouteImport.update({
   id: '/membership',
   path: '/membership',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MembershipInfoRoute = MembershipInfoRouteImport.update({
-  id: '/membership-info',
-  path: '/membership-info',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoticesRoute = NoticesRouteImport.update({
@@ -120,11 +80,6 @@ const PaymentsRoute = PaymentsRouteImport.update({
   path: '/payments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -135,19 +90,9 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TrainingRoute = TrainingRouteImport.update({
   id: '/training',
   path: '/training',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VerifyRoute = VerifyRouteImport.update({
-  id: '/verify',
-  path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WelfareRoute = WelfareRouteImport.update({
@@ -155,204 +100,129 @@ const WelfareRoute = WelfareRouteImport.update({
   path: '/welfare',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WelfareServicesRoute = WelfareServicesRouteImport.update({
-  id: '/welfare-services',
-  path: '/welfare-services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/blood-donors': typeof BloodDonorsRoute
-  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/events': typeof EventsRoute
-  '/faq': typeof FaqRoute
-  '/find-a-mechanic': typeof FindAMechanicRoute
-  '/leadership': typeof LeadershipRoute
   '/membership': typeof MembershipRoute
-  '/membership-info': typeof MembershipInfoRoute
   '/notices': typeof NoticesRoute
   '/offers': typeof OffersRoute
   '/payments': typeof PaymentsRoute
-  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
-  '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/verify': typeof VerifyRoute
   '/welfare': typeof WelfareRoute
-  '/welfare-services': typeof WelfareServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/blood-donors': typeof BloodDonorsRoute
-  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/events': typeof EventsRoute
-  '/faq': typeof FaqRoute
-  '/find-a-mechanic': typeof FindAMechanicRoute
-  '/leadership': typeof LeadershipRoute
   '/membership': typeof MembershipRoute
-  '/membership-info': typeof MembershipInfoRoute
   '/notices': typeof NoticesRoute
   '/offers': typeof OffersRoute
   '/payments': typeof PaymentsRoute
-  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
-  '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/verify': typeof VerifyRoute
   '/welfare': typeof WelfareRoute
-  '/welfare-services': typeof WelfareServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/blood-donors': typeof BloodDonorsRoute
-  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/emergency': typeof EmergencyRoute
   '/events': typeof EventsRoute
-  '/faq': typeof FaqRoute
-  '/find-a-mechanic': typeof FindAMechanicRoute
-  '/leadership': typeof LeadershipRoute
   '/membership': typeof MembershipRoute
-  '/membership-info': typeof MembershipInfoRoute
   '/notices': typeof NoticesRoute
   '/offers': typeof OffersRoute
   '/payments': typeof PaymentsRoute
-  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
-  '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/verify': typeof VerifyRoute
   '/welfare': typeof WelfareRoute
-  '/welfare-services': typeof WelfareServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/admin'
     | '/auth'
     | '/blood-donors'
-    | '/contact'
     | '/dashboard'
     | '/emergency'
     | '/events'
-    | '/faq'
-    | '/find-a-mechanic'
-    | '/leadership'
     | '/membership'
-    | '/membership-info'
     | '/notices'
     | '/offers'
     | '/payments'
-    | '/privacy'
     | '/profile'
     | '/register'
-    | '/terms'
     | '/training'
-    | '/verify'
     | '/welfare'
-    | '/welfare-services'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/admin'
     | '/auth'
     | '/blood-donors'
-    | '/contact'
     | '/dashboard'
     | '/emergency'
     | '/events'
-    | '/faq'
-    | '/find-a-mechanic'
-    | '/leadership'
     | '/membership'
-    | '/membership-info'
     | '/notices'
     | '/offers'
     | '/payments'
-    | '/privacy'
     | '/profile'
     | '/register'
-    | '/terms'
     | '/training'
-    | '/verify'
     | '/welfare'
-    | '/welfare-services'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/admin'
     | '/auth'
     | '/blood-donors'
-    | '/contact'
     | '/dashboard'
     | '/emergency'
     | '/events'
-    | '/faq'
-    | '/find-a-mechanic'
-    | '/leadership'
     | '/membership'
-    | '/membership-info'
     | '/notices'
     | '/offers'
     | '/payments'
-    | '/privacy'
     | '/profile'
     | '/register'
-    | '/terms'
     | '/training'
-    | '/verify'
     | '/welfare'
-    | '/welfare-services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
   BloodDonorsRoute: typeof BloodDonorsRoute
-  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   EmergencyRoute: typeof EmergencyRoute
   EventsRoute: typeof EventsRoute
-  FaqRoute: typeof FaqRoute
-  FindAMechanicRoute: typeof FindAMechanicRoute
-  LeadershipRoute: typeof LeadershipRoute
   MembershipRoute: typeof MembershipRoute
-  MembershipInfoRoute: typeof MembershipInfoRoute
   NoticesRoute: typeof NoticesRoute
   OffersRoute: typeof OffersRoute
   PaymentsRoute: typeof PaymentsRoute
-  PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
-  TermsRoute: typeof TermsRoute
   TrainingRoute: typeof TrainingRoute
-  VerifyRoute: typeof VerifyRoute
   WelfareRoute: typeof WelfareRoute
-  WelfareServicesRoute: typeof WelfareServicesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -362,13 +232,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -392,13 +255,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BloodDonorsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -420,39 +276,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/find-a-mechanic': {
-      id: '/find-a-mechanic'
-      path: '/find-a-mechanic'
-      fullPath: '/find-a-mechanic'
-      preLoaderRoute: typeof FindAMechanicRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leadership': {
-      id: '/leadership'
-      path: '/leadership'
-      fullPath: '/leadership'
-      preLoaderRoute: typeof LeadershipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/membership': {
       id: '/membership'
       path: '/membership'
       fullPath: '/membership'
       preLoaderRoute: typeof MembershipRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/membership-info': {
-      id: '/membership-info'
-      path: '/membership-info'
-      fullPath: '/membership-info'
-      preLoaderRoute: typeof MembershipInfoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notices': {
@@ -476,13 +304,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaymentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -497,25 +318,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/training': {
       id: '/training'
       path: '/training'
       fullPath: '/training'
       preLoaderRoute: typeof TrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/verify': {
-      id: '/verify'
-      path: '/verify'
-      fullPath: '/verify'
-      preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/welfare': {
@@ -525,42 +332,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WelfareRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/welfare-services': {
-      id: '/welfare-services'
-      path: '/welfare-services'
-      fullPath: '/welfare-services'
-      preLoaderRoute: typeof WelfareServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
   BloodDonorsRoute: BloodDonorsRoute,
-  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   EmergencyRoute: EmergencyRoute,
   EventsRoute: EventsRoute,
-  FaqRoute: FaqRoute,
-  FindAMechanicRoute: FindAMechanicRoute,
-  LeadershipRoute: LeadershipRoute,
   MembershipRoute: MembershipRoute,
-  MembershipInfoRoute: MembershipInfoRoute,
   NoticesRoute: NoticesRoute,
   OffersRoute: OffersRoute,
   PaymentsRoute: PaymentsRoute,
-  PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
-  TermsRoute: TermsRoute,
   TrainingRoute: TrainingRoute,
-  VerifyRoute: VerifyRoute,
   WelfareRoute: WelfareRoute,
-  WelfareServicesRoute: WelfareServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
