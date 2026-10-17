@@ -1,29 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { PublicLayout } from '../components/shared/PublicLayout';
-import { useI18n } from '../lib/i18n';
-import { EmptyState } from '../components/shared/EmptyState';
+import { AssociationApp } from '@/components/association/portal';
 
 export const Route = createFileRoute('/training')({
-  head: () => ({
-    meta: [
-      { title: 'Training & Skill Development | R2WMS' },
-      { name: 'description', content: 'Technical training and skill development programs for mechanics.' },
-    ],
-  }),
-  component: Training,
+  head: () => ({ meta: [
+    { title: 'Training | R2WMS' },
+    { name: 'description', content: 'Training programs and browser-local demo enrollments.' },
+    { property: 'og:title', content: 'Training | R2WMS' },
+    { property: 'og:description', content: 'Training programs and browser-local demo enrollments.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
+  component: AssociationApp,
 });
-
-function Training() {
-  const { t } = useI18n();
-  return (
-    <PublicLayout>
-      <div className="py-20 container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">{t('nav.training')}</h1>
-        <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
-          We organize regular technical workshops and skill upgrade programs to keep our members updated with the latest two-wheeler technologies.
-        </p>
-        <EmptyState message="Upcoming training sessions will be posted here." />
-      </div>
-    </PublicLayout>
-  );
-}

@@ -1,26 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { PublicLayout } from '../components/shared/PublicLayout';
-import { useI18n } from '../lib/i18n';
-import { EmptyState } from '../components/shared/EmptyState';
+import { AssociationApp } from '@/components/association/portal';
 
 export const Route = createFileRoute('/offers')({
-  head: () => ({
-    meta: [
-      { title: 'Member Offers | R2WMS' },
-      { name: 'description', content: 'Exclusive offers and discounts for R2WMS members.' },
-    ],
-  }),
-  component: Offers,
+  head: () => ({ meta: [
+    { title: 'Member Offers | R2WMS' },
+    { name: 'description', content: 'Illustrative partner offers in your R2WMS demo portal.' },
+    { property: 'og:title', content: 'Member Offers | R2WMS' },
+    { property: 'og:description', content: 'Illustrative partner offers in your R2WMS demo portal.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
+  component: AssociationApp,
 });
-
-function Offers() {
-  const { t } = useI18n();
-  return (
-    <PublicLayout>
-      <div className="py-20 container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">{t('nav.offers')}</h1>
-        <EmptyState message="Partner offers and member discounts will appear here soon." />
-      </div>
-    </PublicLayout>
-  );
-}
