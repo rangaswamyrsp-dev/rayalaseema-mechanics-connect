@@ -1,9 +1,10 @@
-import { Link, useRouterState } from '@tanstack/react-router';
+import { Link, useNavigate, useRouterState } from '@tanstack/react-router';
 import { useState, type FormEvent } from 'react';
 import { ArrowUpRight, ArrowRight, Bell, Wrench, House, BadgeCheck, HandHeart, Megaphone, UserRound, CreditCard, ShieldCheck, ChevronDown, LogOut, PanelLeftClose, PanelLeftOpen, LifeBuoy, Download, UsersRound, Search, Plus, Check, Globe, HeartHandshake, Phone, X, CalendarDays, GraduationCap, Tag, Droplets, Siren } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { DemoProvider, useDemo, demoMember, labels, translate, type Member } from './demo-store';
+import { useDemo, demoMember, labels, translate, type Member } from './demo-store';
+import { LoginEntry } from './login-entry';
 import mechanics from '@/assets/mechanics.jpg';
 
 const navigation = [
@@ -23,7 +24,10 @@ const navigation = [
 const mobileNav = ['home', 'membership', 'welfare', 'notices', 'profile'] as const;
 
 export function AssociationApp() {
-  return <DemoProvider><Portal /></DemoProvider>;
+  const { data, ready } = useDemo();
+  if (!ready) return <div className="loading-state" role="status">Loading your portal…</div>;
+  if (!data.currentId && !data.admin) return <LoginEntry />;
+  return <Portal />;
 }
 
 function Logo() {
@@ -32,6 +36,7 @@ function Logo() {
 
 function Portal() {
   const { data, update, ready } = useDemo();
+  const navigate = useNavigate();
   const path = useRouterState({ select: s => s.location.pathname });
   const t = labels[data.language];
   const tr = (text: string) => translate(text, data.language);
@@ -44,7 +49,7 @@ function Portal() {
   const title = path === '/admin' ? t.admin : page ? t[page.key] : t.home;
 
   function notify(text: string) { setMessage(tr(text)); }
-  function signout() { update(d => ({ ...d, currentId: null, admin: false })); notify('You have left demo access.'); }
+  function signout() { update(d => ({ ...d, currentId: null, admin: false })); navigate({ to: '/', replace: true }); }
 
   const myRequests = data.requests.filter(r => r.memberId === member?.id);
 

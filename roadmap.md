@@ -2,11 +2,13 @@
 - [x] Responsive design system and browser-local demo mode (kept, clearly labeled).
 - [ ] Lovable Cloud schema, roles, area-scoped security, storage buckets, audit log.
 - [ ] Real sign-in (email + Google), registration application workflow, admin approval, membership numbers.
-- [ ] Public website: all 16 pages with real approved data.
+- [x] Finish login/register-first demo entry; remove public marketing and mechanic search pages.
+- [x] Connect Notices, Events, Training and Offers to the shared member portal.
+- [x] Test registration, returning demo access, navigation and sign-out end-to-end.
 - [ ] Member dashboard, digital ID card PDF, secure QR verification page.
 - [ ] Membership plans, payments (Razorpay setup state, manual verified records), receipts, refunds.
 - [ ] Welfare schemes, applications, documents, reviews, disbursements.
-- [ ] Notices, in-app notifications, directory, emergency, blood donors.
+- [ ] Production notices, in-app notifications, emergency and blood donors (mechanic directory removed from scope).
 - [ ] Events, training, certificates, partner offers, reports/exports.
 - [ ] English/Telugu throughout; installable app (manifest).
 - [ ] README and security review.
