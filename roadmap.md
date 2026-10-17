@@ -2,7 +2,9 @@
 - [x] Responsive design system and browser-local demo mode (kept, clearly labeled).
 - [ ] Lovable Cloud schema, roles, area-scoped security, storage buckets, audit log.
 - [ ] Real sign-in (email + Google), registration application workflow, admin approval, membership numbers.
-- [ ] Public website: all 16 pages with real approved data.
+- [ ] Finish login/register-first demo entry; remove public marketing and mechanic search pages.
+- [ ] Connect Notices, Events, Training and Offers to the shared member portal.
+- [ ] Test registration, returning demo access, navigation and sign-out end-to-end.
 - [ ] Member dashboard, digital ID card PDF, secure QR verification page.
 - [ ] Membership plans, payments (Razorpay setup state, manual verified records), receipts, refunds.
 - [ ] Welfare schemes, applications, documents, reviews, disbursements.
