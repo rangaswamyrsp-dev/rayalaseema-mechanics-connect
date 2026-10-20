@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Application architecture
+- Keep membership identity rendering and local photo preparation in focused shared components; the dashboard and printable membership page must display the same saved member details without uploading demo photos.
 - Keep browser-local demo records in the shared demo provider, isolated from any future production authentication; demo roles never authorize server operations.
 - Mount the demo provider once in the root and show account entry when the portal has no local demo identity; this preserves demo state across navigation without implying server authorization.
 - Use TanStack content routes with the shared association portal and route-specific metadata so each navigation destination remains addressable.
