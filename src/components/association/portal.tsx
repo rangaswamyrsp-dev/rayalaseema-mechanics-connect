@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useDemo, demoMember, labels, translate, type Member } from './demo-store';
 import { LoginEntry } from './login-entry';
+import { MemberCard } from './member-card';
+import { MemberPhoto } from './member-photo';
 import mechanics from '@/assets/mechanics.jpg';
 
 const navigation = [
@@ -41,6 +43,7 @@ function Portal() {
   const t = labels[data.language];
   const tr = (text: string) => translate(text, data.language);
   const member = data.currentId === 'demo-member' ? demoMember : data.members.find(m => m.id === data.currentId);
+  const [photo, setPhoto] = useState<string | undefined>(undefined);
   const [collapsed, setCollapsed] = useState(false);
   const [modal, setModal] = useState<'help' | 'notice' | null>(null);
   const [message, setMessage] = useState('');
@@ -140,8 +143,8 @@ function Portal() {
               <section className="help-strip"><span className="help-strip-icon"><LifeBuoy /></span><div><h2>{t.help}</h2><p>When you need a helping hand, your community is close.</p></div><Button variant="outline" onClick={() => setModal('help')}><Phone />{t.support}<ArrowUpRight /></Button></section>
             </>
             : path === '/membership' ? <section className="detail-section">
-              <div className="section-heading"><h2>{tr('Your digital membership')}</h2>{member?.status === 'Active' && <Button variant="outline" onClick={() => window.print()}><Download /> Print demo card</Button>}</div>
-              <div className="full-member-card"><MemberCard member={member} language={data.language} /></div>
+              <div className="section-heading"><h2>{tr('Your digital membership')}</h2>{member?.status === 'Active' && <Button variant="outline" onClick={() => window.print()}><Download /> {tr('Print demo card')}</Button>}</div>
+              <div className="membership-layout"><div className="full-member-card"><MemberCard member={member} language={data.language} /><Button asChild variant="outline" className="edit-card-button"><Link to="/profile"><UserRound />{tr('Edit card details')}</Link></Button></div><section className="membership-announcements"><div className="section-heading"><h2>{t.updates}</h2><Link to="/notices">{t.all}<ArrowRight /></Link></div>{data.notices.length ? data.notices.slice(0, 3).map(n => <article className="notice-row" key={n.id}><span className="icon-tile blue"><Megaphone /></span><div><small>{n.date}</small><h3>{n.title}</h3><p>{n.detail}</p></div></article>) : <div className="quiet-empty"><Megaphone /><h3>{tr('No notices published yet')}</h3></div>}</section></div>
               <div className="membership-details"><h2>{tr('Membership details')}</h2>{member ? <dl><dt>{tr('Name')}</dt><dd>{member.name}</dd><dt>{tr('Workshop')}</dt><dd>{member.workshop}</dd><dt>District</dt><dd>{member.district}</dd><dt>{tr('Status')}</dt><dd><span className="status-badge">{tr(member.status)}</span></dd></dl> : <Empty icon={BadgeCheck} title={tr('Your membership starts here')} text="Sign in or create a member profile to view your membership status." action={<Button asChild><Link to="/">Sign in or register <ArrowRight /></Link></Button>} />}<p className="small-note">Demo cards are not valid association IDs. Secure QR verification is not connected.</p></div>
             </section>
             : path === '/welfare' ? <section className="detail-section">
@@ -218,10 +221,16 @@ function Portal() {
             </section>
             : <section className="detail-section">
               <h2>{tr('My profile')}</h2>
-              {member ? <form key={member.id} className="standard-form" onSubmit={e => { e.preventDefault(); if (member.id === 'demo-member') { notify('Create your own profile to save personal details.'); return; } const f = new FormData(e.currentTarget); update(d => ({ ...d, members: d.members.map(m => m.id === member.id ? { ...m, name: String(f.get('name')), workshop: String(f.get('workshop')), district: String(f.get('district')) } : m) })); notify('Your profile has been updated.'); }}>
-                <label>{tr('Full name')}<input name="name" required defaultValue={member.name} /></label>
+              {member ? <form key={member.id} className="standard-form" onSubmit={e => { e.preventDefault(); if (member.id === 'demo-member') { notify('Create your own profile to save personal details.'); return; } const f = new FormData(e.currentTarget); update(d => ({ ...d, members: d.members.map(m => m.id === member.id ? { ...m, name: String(f.get('name')), workshop: String(f.get('workshop')), district: String(f.get('district')), photo: photo ?? member.photo, address: String(f.get('address')), phone: String(f.get('phone')), mandal: String(f.get('mandal')), occupation: String(f.get('occupation')), bloodGroup: String(f.get('bloodGroup')) } : m) })); notify('Your profile has been updated.'); }}>
+                <MemberPhoto value={photo ?? member.photo} onChange={setPhoto} language={data.language} />
+                <label>{tr('Full name')}<input name="name" required maxLength={100} defaultValue={member.name} /></label>
                 <label>{tr('Workshop name')}<input name="workshop" required defaultValue={member.workshop} /></label>
                 <label>{tr('District')}<select aria-label={tr('District')} name="district" defaultValue={member.district}>{[member.district, ...['Anantapur', 'Sri Sathya Sai', 'Kurnool', 'Nandyal', 'YSR Kadapa', 'Annamayya', 'Chittoor', 'Tirupati'].filter(d => d !== member.district)].map(d => <option key={d}>{d}</option>)}</select></label>
+                <label>{tr('Occupation / Specialization')}<input name="occupation" maxLength={100} defaultValue={member.occupation ?? ''} /></label>
+                <label>{tr('Phone number')}<input name="phone" type="tel" maxLength={20} defaultValue={member.phone ?? ''} /></label>
+                <label>{tr('Mandal / Town')}<input name="mandal" maxLength={100} defaultValue={member.mandal ?? ''} /></label>
+                <label>{tr('Address')}<textarea name="address" maxLength={300} defaultValue={member.address ?? ''} /></label>
+                <label>{tr('Blood group (optional)')}<select aria-label={tr('Blood group (optional)')} name="bloodGroup" defaultValue={member.bloodGroup ?? ''}><option value="">—</option>{['A+', 'A−', 'B+', 'B−', 'O+', 'O−', 'AB+', 'AB−'].map(g => <option key={g}>{g}</option>)}</select></label>
                 <Button type="submit">{tr('Save profile')}</Button>
                 <Button type="button" variant="outline" onClick={signout}><LogOut /> Leave demo access</Button>
               </form> : <Empty icon={UserRound} title={tr('Make yourself at home')} text="Sign in or create a browser-local member profile." action={<Button asChild><Link to="/">Sign in or register <ArrowRight /></Link></Button>} />}
@@ -254,10 +263,6 @@ function Portal() {
       </Dialog>
     </div>
   );
-}
-
-function MemberCard({ member, language }: { member: Member | undefined; language: 'en' | 'te' }) {
-  return <div className="digital-card"><div className="card-brand"><Wrench /><div><strong>R2WMS</strong><small>Rayalaseema Two-Wheeler Mechanics Welfare Seva</small></div><ShieldCheck /></div><div className="card-member"><span className="card-avatar"><UserRound /></span><div><h3>{member?.name ?? 'Your place in our community'}</h3><p>{member ? member.district : 'Rayalaseema, Andhra Pradesh'}</p><span className={`card-status ${member?.status === 'Active' ? 'is-active' : ''}`}><span />{member ? translate(member.status, language) : translate('Not registered', language)}</span></div></div><div className="card-bottom"><span>{member ? 'BROWSER-LOCAL DEMO CARD' : 'MEMBERSHIP • WELFARE • COMMUNITY'}</span><HeartHandshake /></div></div>;
 }
 
 function Empty({ icon: Icon, title, text, action }: { icon: typeof House; title: string; text: string; action?: React.ReactNode }) {
