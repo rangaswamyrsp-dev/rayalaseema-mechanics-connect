@@ -1,4 +1,5 @@
-# R2WMS
+# R2MWS
+- [ ] Correct association branding, remove demo wording from membership card only, and add clearly labeled sample notices.
 - [x] Improve browser-local membership card with member photo, address/contact/workshop details and nearby announcements; verify save and print views.
 - [x] Responsive design system and browser-local demo mode (kept, clearly labeled).
 - [ ] Lovable Cloud schema, roles, area-scoped security, storage buckets, audit log.
